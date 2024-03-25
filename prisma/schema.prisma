@@ -20,6 +20,8 @@ model User {
   name      String  @unique
   password  String  @unique
 
+  Task      Task[]
+
   createdAt DateTime @default(now())
   updatedAt DateTime  @default(now()) @updatedAt
 }
@@ -31,6 +33,9 @@ model Task {
   endAt       DateTime
   description String    @db.VarChar(50)
   priority    String    @db.VarChar(50)
+
+  userId      Int
+  User        User      @relation(fields: [userId], references: [id])
   
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @default(now()) @updatedAt

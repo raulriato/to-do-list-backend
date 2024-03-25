@@ -1,7 +1,7 @@
 import { User } from "@prisma/client";
 import { prisma } from "../database/mysql.js";
 
-async function create({ name, username, password}: Omit<User, 'id'>): Promise<User> {
+async function create({ name, username, password}: Omit<User, 'id'>) {
     return prisma.user.create({
         data: {
             name,
@@ -19,7 +19,16 @@ async function findByName(name: string) {
   })
 }
 
+async function findById(id: number) {
+  return prisma.user.findFirst({
+    where: {
+      id
+    }
+  })
+}
+
 export {
   create,
-  findByName
+  findByName,
+  findById
 }

@@ -2,10 +2,11 @@
   "name": "to-do-list-backend",
   "version": "1.0.0",
   "description": "",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "ts-node src/app.ts",
+    "start": "npx tsc && npx ts-node dist/app.js",
     "dev": "nodemon --legacy-watch src/app.ts"
   },
   "author": "",

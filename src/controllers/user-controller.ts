@@ -16,9 +16,10 @@ async function post(req: Request, res: Response) {
   };
 
   try {
-    const dbUser = userRepository.findByName(user.name);
+    const dbUser = await userRepository.findByName(user.name);
 
     if (!!dbUser) {
+      console.log({ dbUser });
       return conflictResponse(res, 'um usuário com esse nome já existe');
     }
 
